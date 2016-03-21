@@ -2,6 +2,6 @@
 
 Packager is Lysianthus's personal packager for frontend web development projects.
 
-## Usage
+## Installation
 
 	$ npm install
