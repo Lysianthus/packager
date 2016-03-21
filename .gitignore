@@ -1,0 +1,6 @@
+*.ini
+Thumbs.db
+
+dist/
+node_modules/
+src/
