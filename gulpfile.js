@@ -60,8 +60,8 @@ gulp.task('imagemin', () => {
 });
 
 gulp.task('common', function() {
-	return gulp.src('common/**/*', {read:false})
+	return gulp.src('common/**/*')
 		.pipe(gulp.dest('dist'))
 });
 
-gulp.task('default', ['com']);
+gulp.task('default', ['com', 'common']);
