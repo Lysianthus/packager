@@ -64,4 +64,4 @@ gulp.task('common', function() {
 		.pipe(gulp.dest('dist'))
 });
 
-gulp.task('default', ['com']);
+gulp.task('default', ['com', 'common']);

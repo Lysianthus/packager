@@ -1,6 +1,6 @@
+common
+dist
+node_modules
+src
 *.ini
-Thumbs.db
-
-dist/
-node_modules/
-src/
+*.db
