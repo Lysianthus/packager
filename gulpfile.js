@@ -1,12 +1,13 @@
 var del = require('del'),
 	gulp = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer'),
+	cleancss = require('gulp-clean-css'),
 	cssbeautify = require('gulp-cssbeautify'),
-	gulpif = require('gulp-if'),
-	minifycss = require('gulp-minify-css'),
-	twig = require('gulp-twig'),
 	uglify = require('gulp-uglify'),
-	useref = require('gulp-useref');
+	useref = require('gulp-useref'),
+	gulpif = require('gulp-if'),
+	twig = require('gulp-twig');
+	//plugins = require('gulp-load-plugins')();
 
 const imagemin = require('gulp-imagemin');
 const pngquant = require('imagemin-pngquant');
@@ -17,7 +18,7 @@ gulp.task('com', function() { //short for 'compressed'
 	return gulp.src('src/*.html')
 		.pipe(assets)
 		.pipe(gulpif('*.css', autoprefixer()))
-		.pipe(gulpif('*.css', minifycss()))
+		.pipe(gulpif('*.css', cleancss()))
 		.pipe(gulpif('*.js', uglify()))
 		.pipe(assets.restore())
 		.pipe(useref())
@@ -64,4 +65,4 @@ gulp.task('common', function() {
 		.pipe(gulp.dest('dist'))
 });
 
-gulp.task('default', ['com', 'common']);
+gulp.task('default', ['com']);
