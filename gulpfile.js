@@ -4,6 +4,7 @@ var del = require('del'),
 	cleancss = require('gulp-clean-css'),
 	cssbeautify = require('gulp-cssbeautify'),
 	uglify = require('gulp-uglify'),
+	rev = require('gulp-rev'),
 	useref = require('gulp-useref'),
 	gulpif = require('gulp-if'),
 	twig = require('gulp-twig');
@@ -13,28 +14,20 @@ const imagemin = require('gulp-imagemin');
 const pngquant = require('imagemin-pngquant');
 
 gulp.task('com', function() { //short for 'compressed'
-	var assets = useref.assets();
-
 	return gulp.src('src/*.html')
-		.pipe(assets)
+		.pipe(useref())
 		.pipe(gulpif('*.css', autoprefixer()))
 		.pipe(gulpif('*.css', cleancss()))
 		.pipe(gulpif('*.js', uglify()))
-		.pipe(assets.restore())
-		.pipe(useref())
 		.pipe(gulp.dest('dist'))
 });
 
 gulp.task('exp', function() { // short for 'expanded'
-	var assets = useref.assets();
-
 	return gulp.src('src/*.html')
-		.pipe(assets)
+		.pipe(useref())
 		.pipe(gulpif('*.css', autoprefixer()))
 		.pipe(gulpif('*.css', cssbeautify()))
 		.pipe(gulpif('*.js', uglify()))
-		.pipe(assets.restore())
-		.pipe(useref())
 		.pipe(gulp.dest('dist'))
 });
 
@@ -65,4 +58,10 @@ gulp.task('common', function() {
 		.pipe(gulp.dest('dist'))
 });
 
-gulp.task('default', ['com']);
+gulp.task('hash', function() {
+	return gulp.src(['dist/**/*.css', 'dist/**/*.js'])
+		.pipe(rev())
+		.pipe(gulp.dest('dist'))
+})
+
+gulp.task('default', ['com', 'hash']);
