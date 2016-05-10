@@ -13,7 +13,7 @@ var del = require('del'),
 const imagemin = require('gulp-imagemin');
 const pngquant = require('imagemin-pngquant');
 
-gulp.task('com', function() { //short for 'compressed'
+gulp.task('compress', function() {
 	return gulp.src('src/*.html')
 		.pipe(useref())
 		.pipe(gulpif('*.css', autoprefixer()))
@@ -22,7 +22,7 @@ gulp.task('com', function() { //short for 'compressed'
 		.pipe(gulp.dest('dist'))
 });
 
-gulp.task('exp', function() { // short for 'expanded'
+gulp.task('expand', function() {
 	return gulp.src('src/*.html')
 		.pipe(useref())
 		.pipe(gulpif('*.css', autoprefixer()))
@@ -43,7 +43,7 @@ gulp.task('twig', function() {
 		.pipe(gulp.dest('dist'))
 });
 
-gulp.task('imagemin', () => {
+gulp.task('images', () => {
 	return gulp.src('src/images/*')
 		.pipe(imagemin({
 			progressive: true,
@@ -62,6 +62,6 @@ gulp.task('hash', function() {
 	return gulp.src(['dist/**/*.css', 'dist/**/*.js'])
 		.pipe(rev())
 		.pipe(gulp.dest('dist'))
-})
+});
 
-gulp.task('default', ['com', 'hash']);
+gulp.task('default', ['compress', 'images']);
