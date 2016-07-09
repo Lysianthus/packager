@@ -58,10 +58,10 @@ gulp.task('common', function() {
 		.pipe(gulp.dest('dist'))
 });
 
-gulp.task('hash', function() {
+gulp.task('rev', function() {
 	return gulp.src(['dist/**/*.css', 'dist/**/*.js'])
 		.pipe(rev())
 		.pipe(gulp.dest('dist'))
 });
 
-gulp.task('default', ['compress', 'images']);
+gulp.task('default', ['compress', 'common', 'images']);
