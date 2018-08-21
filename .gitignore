@@ -2,6 +2,5 @@ common
 dist
 node_modules
 src
-gulpfile-v4.0.0.js
 *.ini
 *.db
