@@ -4,13 +4,16 @@ Packager is my personal packager for frontend web development projects.
 
 ## Environment
 
-* Node.js 8.11+
-* npm 6.4+
+* Node.js (latest)
+* npm (latest)
 
-## Installation
+## 2021.10.26 23:03
 
-	$ npm install
-
-## Usage
-
-Packager uses Gulp. The gulpfile contains some predefined Gulp tasks.
+I was getting the following error when running `gulp`:
+```
+[...]\gulp.ps1 cannot be loaded because running scripts is disabled on this system.
+```
+To solve, I had to run the following command on PowerShell as Administrator:
+```
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+```

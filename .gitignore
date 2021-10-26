@@ -1,6 +1,6 @@
+*.db
+*.ini
 common
 dist
 node_modules
 src
-*.ini
-*.db
