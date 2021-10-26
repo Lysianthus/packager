@@ -20,7 +20,7 @@ function compress() {
 		.pipe(gulpif('*.css', autoprefixer()))
 		.pipe(gulpif('*.css', minifycss()))
 		.pipe(gulpif('*.js', minifyjs()))
-		.pipe(gulp.dest('dist'))
+		.pipe(gulp.dest('dist'));
 }
 
 function expand() {
@@ -29,7 +29,7 @@ function expand() {
 		.pipe(gulpif('*.css', autoprefixer()))
 		.pipe(gulpif('*.css', beautifycss()))
 		.pipe(gulpif('*.js', minifyjs()))
-		.pipe(gulp.dest('dist'))
+		.pipe(gulp.dest('dist'));
 }
 
 function common() {
