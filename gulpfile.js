@@ -7,7 +7,6 @@ const gulp = require('gulp'),
 	minifycss = require('gulp-clean-css'),
 	beautifycss = require('gulp-cssbeautify'),
 	gulpif = require('gulp-if'),
-	//minifyimg = require('gulp-imagemin'),
 	rev = require('gulp-rev'),
 	minifyjs = require('gulp-uglify'),
 	useref = require('gulp-useref');
@@ -33,12 +32,6 @@ function expand() {
 		.pipe(gulp.dest('dist'))
 }
 
-/*function images() {
-	return gulp.src('src/images/*')
-		.pipe(minifyimg())
-		.pipe(gulp.dest('dist/images/'));
-}*/
-
 function common() {
 	return gulp.src('common/**/*')
 		.pipe(gulp.dest('dist'));
@@ -55,5 +48,4 @@ function rename() {
 
 exports.compress = series(parallel(compress, common), rename);
 exports.expand = series(parallel(expand, common), rename);
-//exports.images = images;
 exports.default = series(parallel(compress, common), rename);
